@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <title>vJoy Settings</title>
+      <style>
+         body {
+         font-family: Arial, sans-serif;
+         }
+         input {
+         margin: 5px 0;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="sdpi-wrapper" style="display: none">
+         <div class="sdpi-item">
+            <div class="sdpi-item-label">DeviceID</div>
+            <input id="deviceId" type="number" min="1" max="16" />
+         </div>
+         <div class="sdpi-item">
+            <div class="sdpi-item-label">AxisID</div>
+            <input id="axisId" type="number" min="0" max="7" />
+         </div>
+         <div class="sdpi-item">
+            <div class="sdpi-item-label">AxisValue</div>
+            <input type="range" min="0" max="65535" value="0" class="slider" id="axisValue">
+      </div>
+      <script src="index.js"></script>
+      <script src="../utils/common.js"></script>
+      <script src="../utils/action.js"></script>
+   </body>
+</html>

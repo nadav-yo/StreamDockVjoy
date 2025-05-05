@@ -1,0 +1,72 @@
+{
+  "Actions": [
+    {
+      "Icon": "static/App-button.png",
+      "Name": "button",
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "static/App-button.png",
+          "TitleAlignment": "center",
+          "FontSize": "8"
+        }
+      ],
+      "Settings": {
+        "titleFormat": "title-artist",
+        "timeDisplay": "elapsed",
+        "showTitle": true
+      },
+      "Controllers": [],
+      "UserTitleEnabled": true,
+      "SupportedInMultiActions": true,
+      "Tooltip": "Send a joystick button press to vJoy",
+      "UUID": "org.nadavy.streamdock.button",
+      "PropertyInspectorPath": "propertyInspector/button/index.html"
+    },
+    {
+      "Icon": "static/App-axis.png",
+      "Name": "axis",
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "static/App-axis.png",
+          "TitleAlignment": "center",
+          "FontSize": "8"
+        }
+      ],
+      "Settings": {
+        "titleFormat": "title-artist",
+        "timeDisplay": "elapsed",
+        "showTitle": true
+      },
+      "Controllers": [],
+      "UserTitleEnabled": true,
+      "SupportedInMultiActions": true,
+      "Tooltip": "Send a joystick axis value to vJoy",
+      "UUID": "org.nadavy.streamdock.axis",
+      "PropertyInspectorPath": "propertyInspector/axis/index.html"
+    }
+  ],
+  "SDKVersion": 1,
+  "Author": "NadavY",
+  "Name": "vJoy Joystick Button Plugin",
+  "Icon": "static/App-logo.png",
+  "CodePathWin": "plugin/index.js",
+  "Description": "Send joystick actions to vJoy using vJoy SDK",
+  "Category": "Joystick",
+  "CategoryIcon": "static/App-logo.png",
+  "Version": "1.0.0",
+  "URL": "https://github.com/nadav-yo",
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "7"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "3.10.188.226"
+  },
+  "Nodejs": {
+    "Version": "20"
+  }
+}

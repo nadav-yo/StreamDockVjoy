@@ -1,0 +1,19 @@
+{
+  "Name": "vJoy Joystick Button Plugin",
+  "Description": "",
+  "Category": "",
+  "org.nadavy.streamdock.axis": {
+    "Name": "Axis",
+    "Tooltip": "Axis controller"
+  },
+  "org.nadavy.streamdock.button": {
+    "Name": "Button",
+    "Tooltip": "Button controller"
+  },
+  "Localization": {
+    "DeviceID": "Device ID",
+    "ButtonID": "Button ID",
+    "AxisID": "Axis ID",
+    "AxisValue": "Axis Value"
+  }
+}

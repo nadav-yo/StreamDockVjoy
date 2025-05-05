@@ -1,0 +1,16 @@
+{
+  "name": "streamdock-vjoy",
+  "version": "1.0.0",
+  "author": "nadavy",
+  "main": "index.js",
+  "description": "A plugin for StreamDock that allows you to control vJoy devices.",
+  "scripts": {
+    "build": "ncc build index.js -m -o ./build && node autofile.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.3.0",
+    "log4js": "^6.9.1",
+    "ws": "^8.14.2"
+  }
+}

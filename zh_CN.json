@@ -1,0 +1,19 @@
+{
+  "Name": "vJoy Joystick Button Plugin",
+  "Description": "",
+  "Category": "",
+  "org.nadavy.streamdock.axis": {
+    "Name": "轴",
+    "Tooltip": "轴控制器"
+  },
+  "org.nadavy.streamdock.button": {
+    "Name": "按钮",
+    "Tooltip": "按钮控制器"
+  },
+  "Localization": {
+    "DeviceID": "设备编号",
+    "ButtonID": "按钮编号",
+    "AxisID": "轴数",
+    "AxisValue": "轴值"
+  }
+}

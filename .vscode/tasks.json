@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+	"command": "make",
+    "tasks": [
+      {
+        "label": "Build button press with MSVC (x64)",
+        "type": "shell",
+        "command": "cl",
+        "args": [
+          "send_joystick_button.cpp",
+          "/I", "SDK\\inc",
+          "SDK\\lib\\x64\\vJoyInterface.lib"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/VJoyCpp",
+        },
+        "problemMatcher": ["$msCompile"],
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+	  {
+		"label": "Build axis press with MSVC (x64)",
+		"type": "shell",
+		"command": "cl",
+		"args": [
+		  "send_joystick_axis.cpp",
+		  "/I", "SDK\\inc",
+		  "SDK\\lib\\x64\\vJoyInterface.lib"
+		],
+		"options": {
+		  "cwd": "${workspaceFolder}/VJoyCpp",
+		},
+		"problemMatcher": ["$msCompile"],
+		"group": {
+		  "kind": "build",
+		  "isDefault": false
+		}
+	  },
+	  {
+		"label": "Build and copy executables",
+		"type": "shell",
+		"command": "xcopy",
+		"args": [
+		  "/Y",
+		  "${workspaceFolder}\\VJoyCpp\\*.exe",
+		  "${workspaceFolder}\\plugin"
+		],
+		"options": {
+		  "cwd": "${workspaceFolder}/VJoyCpp",
+		},
+		"dependsOn": [
+		  "Build button press with MSVC (x64)",
+		  "Build axis press with MSVC (x64)"
+		],
+		"problemMatcher": [],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		}
+	}]
+  }

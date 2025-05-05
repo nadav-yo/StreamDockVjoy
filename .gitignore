@@ -1,0 +1,9 @@
+plugin/node_modules/**
+plugin/log/
+plugin/build/
+plugin/data/
+VJoyCpp/SDK
+VJoyCpp/vJoyInterface.dll
+VJoyCpp/*.exe
+VJoyCpp/*.obj
+plugin/vJoyInterface.dll
