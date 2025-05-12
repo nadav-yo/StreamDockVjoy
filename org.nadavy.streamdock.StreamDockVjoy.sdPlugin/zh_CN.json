@@ -14,6 +14,10 @@
     "DeviceID": "设备编号",
     "ButtonID": "按钮编号",
     "AxisID": "轴数",
-    "AxisValue": "轴值"
+    "AxisValue": "轴值",
+    "ActionType": "Action Type",
+    "SET": "Set",
+    "INCREASE": "Increase",
+    "DECREASE": "Decrease"
   }
 }

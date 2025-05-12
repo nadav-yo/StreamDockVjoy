@@ -5,6 +5,7 @@ const path = require('path');
 
 const plugin = new Plugins('vjoy');
 
+const contextSettings = {};
 
 plugin.didReceiveGlobalSettings = ({ payload: { settings } }) => {
     log.info('didReceiveGlobalSettings', settings);
@@ -50,17 +51,15 @@ plugin.button = new Actions({
 
       // Log output from the executable for debugging
       child.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
+        log.info(`stdout: ${data}`);
       });
 
       child.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
-        showAlert(context);
+        log.error(`stderr: ${data}`);
       });
 
       child.on('close', (code) => {
-        console.log(`vJoy executable exited with code ${code}`);
-        showOk(context);
+        log.info(`vJoy executable exited with code ${code}`);
       });
     },
     keyUp({ context, payload }) {
@@ -78,17 +77,15 @@ plugin.button = new Actions({
 
       // Log output from the executable for debugging
       child.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
+        log.info(`stdout: ${data}`);
       });
 
       child.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
-        showAlert(context);
+        log.error(`stderr: ${data}`);
       });
 
       child.on('close', (code) => {
-        console.log(`vJoy executable exited with code ${code}`);
-        showOk(context);
+        log.info(`vJoy executable exited with code ${code}`);
       });
     }
 });
@@ -98,10 +95,14 @@ plugin.axis = new Actions({
     settings: {
       deviceId: 1,
       axisId: 0,
-      axisValue: 0
+      axisValue: 0,
+      axisActionType: "SET",
     }
   },
   async _willAppear({ context, payload }) {
+    contextSettings[context] = {
+      currentAxisValue: 0,
+    };
   },
 
   _willDisappear({ context }) {
@@ -112,7 +113,7 @@ plugin.axis = new Actions({
   },
 
   sendToPlugin({ context, payload }) {
-    plugin.setSettings(context, { deviceId: payload.deviceId, axisId: payload.axisId, axisValue: payload.axisValue });
+    plugin.setSettings(context, { deviceId: payload.deviceId, axisId: payload.axisId, axisValue: payload.axisValue, axisActionType: payload.axisActionType });
   },
   keyUp({ context, payload }) {
        // Retrieve settings from the Property Inspector
@@ -120,26 +121,39 @@ plugin.axis = new Actions({
     const deviceId = settings.deviceId || 1;  // Default device 1 if not set
     const axisId = settings.axisId || 0;  // Default button 0 if not set
     const axisValue = settings.axisValue || 0;  // Default button 0 if not set
+    const axisActionType = settings.axisActionType || "SET";  // Default button 0 if not set
+    let currentAxisValue = contextSettings[context]?.currentAxisValue || 0;  // Default button 0 if not set
+
 
     // Path to the compiled C++ executable
     const exePath = path.join(__dirname, 'send_joystick_axis.exe');
+    axisToSet = axisValue
+    if (axisActionType === "INC") {
+      axisToSet += currentAxisValue;
+    }
+    if (axisActionType === "DEC") {
+      axisToSet = currentAxisValue - axisValue;
+    }
+    axisToSet = Math.max(0, Math.min(axisToSet, 65535));
+
+    contextSettings[context].currentAxisValue = axisToSet;
     
     // Spawn the executable with the deviceId and buttonId as arguments
-    const child = spawn(exePath, [deviceId, axisId, axisValue], {
+    const child = spawn(exePath, [deviceId, axisId, axisToSet], {
       windowsHide: true  // Hide the console window
     });
 
     // Log output from the executable for debugging
     child.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`);
+      log.info(`stdout: ${data}`);
     });
 
     child.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`);
+      log.error(`stderr: ${data}`);
     });
 
     child.on('close', (code) => {
-      console.log(`vJoy executable exited with code ${code}`);
+      log.info(`vJoy executable exited with code ${code}`);
     });
     }
 });

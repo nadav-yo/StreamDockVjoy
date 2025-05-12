@@ -14,6 +14,10 @@
     "DeviceID": "Device ID",
     "ButtonID": "Button ID",
     "AxisID": "Axis ID",
-    "AxisValue": "Axis Value"
+    "AxisValue": "Axis Value",
+    "ActionType": "Action Type",
+    "SET": "Set",
+    "INCREASE": "Increase",
+    "DECREASE": "Decrease"
   }
 }

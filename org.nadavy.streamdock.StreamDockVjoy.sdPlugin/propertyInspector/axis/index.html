@@ -24,7 +24,16 @@
          </div>
          <div class="sdpi-item">
             <div class="sdpi-item-label">AxisValue</div>
-            <input type="range" min="0" max="65535" value="0" class="slider" id="axisValue">
+            <input id="axisValue" type="number" min="0" max="65535" value="0">
+         </div>
+         <div class="sdpi-item">
+            <div class="sdpi-item-label">ActionType</div>
+            <select id="axisActionType">
+               <option value="SET">SET</option>
+               <option value="INC">INCREASE</option>
+               <option value="DEC">DECREASE</option>
+            </select>
+         </div>
       </div>
       <script src="index.js"></script>
       <script src="../utils/common.js"></script>
