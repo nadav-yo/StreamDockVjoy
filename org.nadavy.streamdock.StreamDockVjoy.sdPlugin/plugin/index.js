@@ -1,6 +1,7 @@
 const { type } = require('os');
 const { Plugins, Actions, log } = require('./utils/plugin');
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
+const path = require('path');
 
 const plugin = new Plugins('vjoy');
 
@@ -54,10 +55,12 @@ plugin.button = new Actions({
 
       child.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
+        showAlert(context);
       });
 
       child.on('close', (code) => {
         console.log(`vJoy executable exited with code ${code}`);
+        showOk(context);
       });
     },
     keyUp({ context, payload }) {
@@ -80,10 +83,12 @@ plugin.button = new Actions({
 
       child.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
+        showAlert(context);
       });
 
       child.on('close', (code) => {
         console.log(`vJoy executable exited with code ${code}`);
+        showOk(context);
       });
     }
 });

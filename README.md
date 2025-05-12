@@ -20,11 +20,11 @@ Clone the repository and install the required dependencies from above.
 git clone https://github.com/nadav-yo/StreamDockVjoy.git
 ```
 
-Copying the **vJoyInterface.dll** to the **plugin** directory
+Copying the **vJoyInterface.dll** to the **org.nadavy.streamdock.StreamDockVjoy.sdPlugin/plugin** directory
 
 To compile and deploy the plugin, run
 ```sh
-cd plugin
+cd org.nadavy.streamdock.StreamDockVjoy.sdPlugin/plugin
 npm run build
 ```
 
